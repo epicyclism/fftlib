@@ -94,22 +94,22 @@ template <typename T, size_t FFTSZ> Window<T, FFTSZ>::Window ( window_t wt )
 	switch ( wt )
 	{
 	default :
-	case HAMMING :
+	case window_t::HAMMING :
 		std::generate ( coeff_table_.begin(), coeff_table_.end(), HamFn<T, FFTSZ>());
 		break ;
-	case NOWINDOW :
+	case window_t::NOWINDOW :
 		std::fill (coeff_table_.begin(), coeff_table_.end(), static_cast<T>( 1 )) ;
 		break ;
-	case BLACKMAN :
+	case window_t::BLACKMAN :
 		std::generate (coeff_table_.begin(), coeff_table_.end(), BlackmanFn<T, FFTSZ> ()) ;
 		break ;
-	case BLACKMANHARRIS :
+	case window_t::BLACKMANHARRIS :
 		std::generate (coeff_table_.begin(), coeff_table_.end(), BlackmanHarrisFn<T, FFTSZ> ()) ;
 		break ;
-	case KAISER5 :
+	case window_t::KAISER5 :
 		std::generate (coeff_table_.begin(), coeff_table_.end(), KaiserFn<T, FFTSZ, 5> ()) ;
 		break ;
-	case KAISER7 :
+	case window_t::KAISER7 :
 		std::generate (coeff_table_.begin(), coeff_table_.end(), KaiserFn<T, FFTSZ, 7> ()) ;
 		break ;
 	}

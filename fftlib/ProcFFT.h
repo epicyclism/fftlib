@@ -26,7 +26,7 @@ private :
 	void PostFFT () ;
 
 public :
-	ProcessorFFT ( window_t wt = HAMMING ) ;
+	ProcessorFFT ( window_t wt = window_t::HAMMING ) ;
 	virtual ~ProcessorFFT () final;
 	virtual std::pair<T const*, T const*> operator () ( T const* ib, T const* ie ) final;
 	virtual size_t width () final { return FFTSZ ; } 

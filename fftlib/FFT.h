@@ -13,7 +13,7 @@ private :
 	std::array<T, FFTSZ> coeff_table_;
 	T gain_ ;
 public :
-	Window (window_t wt = HAMMING) ;
+	Window (window_t wt = window_t::HAMMING) ;
 	template<typename II, typename OI> void operator () ( II samples_b, II samples_e, OI out_b) const ;
 	T Gain () const ;
 } ;

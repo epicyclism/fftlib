@@ -22,7 +22,7 @@ public:
 };
 
 
-enum window_t { NOWINDOW, HAMMING, BLACKMAN, BLACKMANHARRIS, KAISER5, KAISER7 };
+enum class window_t { NOWINDOW, HAMMING, BLACKMAN, BLACKMANHARRIS, KAISER5, KAISER7 };
 
 window_t wt_from_code(char t);
 window_t wt_from_string(std::string_view t);

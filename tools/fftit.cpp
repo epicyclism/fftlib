@@ -14,7 +14,7 @@
 
 void Welcome()
 {
-	std::cerr << "FFTit 1.08 Copyright Paul Ranson (c) 2009-2022\n";
+	std::cerr << "FFTit 2.00 Copyright Paul Ranson (c) 2009-2022\n";
 	std::cerr << "email - paul@epicyclism.com\n\n";
 	std::cerr << "Performs FFT on a file of raw sample data\n";
 	std::cerr << "(sizeof fp type is " << sizeof(fp_t) << ")\n\n";
@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
 	bool    bDB = false;
 	bool    bOnce = false;
 	size_t sample_rate = -1;
-	window_t wt = HAMMING;
+	window_t wt = window_t::HAMMING;
 
 	int		arg = 1;
 	while (arg < argc)

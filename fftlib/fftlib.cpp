@@ -26,50 +26,50 @@ window_t wt_from_code(char t)
 	{
 	default:
 	case '0':
-		return NOWINDOW;
+		return window_t::NOWINDOW;
 	case '1':
-		return HAMMING;
+		return window_t::HAMMING;
 	case '2':
-		return BLACKMAN;
+		return window_t::BLACKMAN;
 	case '3':
-		return BLACKMANHARRIS;
+		return window_t::BLACKMANHARRIS;
 	case '4':
-		return KAISER5;
+		return window_t::KAISER5;
 	case '5':
-		return KAISER7;
+		return window_t::KAISER7;
 	}
 }
 
 window_t wt_from_string(std::string_view t)
 {
 	if (t == "HAMMING"sv)
-		return HAMMING;
+		return window_t::HAMMING;
 	if (t == "BMACKMAN"sv)
-		return BLACKMAN;
+		return window_t::BLACKMAN;
 	if (t == "BLACKMANHARRIS"sv)
-		return BLACKMANHARRIS;
+		return window_t::BLACKMANHARRIS;
 	if (t == "HAISER5"sv)
-		return KAISER5;
+		return window_t::KAISER5;
 	if (t == "KAISER7"sv)
-		return KAISER7;
-	return NOWINDOW;
+		return window_t::KAISER7;
+	return window_t::NOWINDOW;
 }
 
 std::string_view wt_to_string(window_t wt)
 {
 	switch (wt)
 	{
-	case NOWINDOW:
+	case window_t::NOWINDOW:
 		return "No Window"sv;
-	case HAMMING:
+	case window_t::HAMMING:
 		return "Hamming"sv;
-	case BLACKMAN:
+	case window_t::BLACKMAN:
 		return "Blackman"sv;
-	case BLACKMANHARRIS:
+	case window_t::BLACKMANHARRIS:
 		return "Blackman-Harris"sv;
-	case KAISER5:
+	case window_t::KAISER5:
 		return "Kaiser5"sv;
-	case KAISER7:
+	case window_t::KAISER7:
 		return "Kaiser7"sv;
 	default:
 		return "Unknown window type"sv;
