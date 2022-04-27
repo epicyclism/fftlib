@@ -63,19 +63,19 @@ int main(int argc, char* argv[])
 		{
 			switch (argv[arg][1])
 			{
-			case TEXT('F'):
-			case TEXT('f'):
+			case 'F':
+			case 'f':
 				fftWidth = atoi(argv[arg] + 2);
 				break;
-			case TEXT('D'):
-			case TEXT('d'):
+			case 'D':
+			case 'd':
 				bDB = true;
 				break;
-			case TEXT('1'):
+			case '1':
 				bOnce = true;
 				break;
-			case TEXT('W'):
-			case TEXT('w'):
+			case 'W':
+			case 'w':
 				wt = wt_from_code(argv[arg][2]);
 				break;
 			default:
@@ -100,13 +100,13 @@ int main(int argc, char* argv[])
 	// checks
 	if (sample_rate == 0)
 	{
-		std::cerr << TEXT("Sample rate provided was not understood\n");
+		std::cerr << "Sample rate provided was not understood\n";
 		Usage();
 		return -1;
 	}
 	if (fftWidth < FFTWdMin || fftWidth > FFTWdMax)
 	{
-		std::cerr << TEXT("FFTWidth provided is out of range, valid between") << FFTWdMin << TEXT(" and ") << FFTWdMax << TEXT(" inclusive.\n");
+		std::cerr << "FFTWidth provided is out of range, valid between" << FFTWdMin << " and " << FFTWdMax << " inclusive.\n";
 		Usage();
 		return -1;
 	}

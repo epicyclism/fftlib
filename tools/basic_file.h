@@ -131,6 +131,10 @@ public :
 	{
 		return hFile_ ;
 	}
+	operator bool() const
+	{
+		return good();
+	}
 };
 using out_file_t = basic_file<GENERIC_WRITE, 0, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL> ;
 #else
@@ -213,6 +217,11 @@ public:
 	{
 		return h_;
 	}
+	operator bool() const
+	{
+		return good();
+	}
+
 };
 using out_file_t = basic_file<O_WRONLY, O_CREAT | O_TRUNC>;
 #endif
