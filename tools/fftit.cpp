@@ -120,8 +120,7 @@ int main(int argc, char* argv[])
 
 	// an FFT implementation!
 	auto pfft = make_fft(fftWidth, wt);
-	std::vector<fp_t> mean;
-	mean.resize(pfft->width());
+	std::vector<fp_t> mean(pfft->width());
 
 	// report
 	std::cerr << "FFTit. Processing,  width " << pfft->width() << ", window " << wt_to_string(wt) << "\n";
@@ -141,7 +140,6 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		std::fill(mean.begin(), mean.end(), fp_t(0));
 		// 50% overlap
 		size_t nffts = mmf.length();
 		if (nffts >= pfft->width() * 3 / 2)
@@ -163,13 +161,12 @@ int main(int argc, char* argv[])
 		{
 			auto[ob, oe] = (*pfft) (mmf.ptr() + n * pfft->width() / 2, mmf.ptr() + n * pfft->width() / 2 + pfft->width());
 			// add to average
-			auto itM = mean.begin();
 			std::transform(mean.begin(), mean.end(), ob, mean.begin(), std::plus<>());
 		}
 		using namespace std::placeholders;
 		std::transform(mean.begin(), mean.end(), mean.begin(), std::bind(std::divides<fp_t>(), _1, fp_t(nffts)));
 	}
-	if (sample_rate)
+	if (sample_rate != -1)
 	{
 		double fb = 0;
 		double fbinc = double(sample_rate) / pfft->width();
